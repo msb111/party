@@ -1,4 +1,4 @@
-import "./index.css";
+import "./bootstrap.min.css";
 
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";

@@ -1,5 +1,4 @@
 import { Web3Provider } from "@ethersproject/providers";
-import WalletConnectProvider from "@walletconnect/web3-provider";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Web3Modal from "web3modal";
 
@@ -20,14 +19,7 @@ function useWeb3Modal(config = {}) {
     return new Web3Modal({
       network,
       cacheProvider: true,
-      providerOptions: {
-        walletconnect: {
-          package: WalletConnectProvider,
-          options: {
-            infuraId,
-          },
-        },
-      },
+      providerOptions: {},
     });
   }, [infuraId, network]);
 

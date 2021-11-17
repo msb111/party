@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  background-color: #282c34;
-  min-height: 70px;
+  background-color: #000000;
+  min-height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,42 +10,69 @@ export const Header = styled.header`
   color: white;
 `;
 
-export const Body = styled.div`
-  align-items: center;
-  background-color: #282c34;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: calc(100vh - 70px);
+export const FaucetInfo = styled.div`
+  background-color: #edbb99;
+  border: 2px;
+  border-radius: 1px;
+  color: #282c34;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0px 2px;
+  padding: 4px 12px;
+
+  ${props => props.hidden && "hidden"} :focus {
+    border: none;
+    outline: none;
+  }
 `;
 
-export const Image = styled.img`
-  height: 40vmin;
-  margin-bottom: 16px;
-  pointer-events: none;
+export const WalletInfo = styled.div`
+  background-color: #a3e4d7;
+  border: 2px;
+  border-radius: 1px;
+  color: #282c34;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0px 2px;
+  padding: 4px 12px;
+
+  ${props => props.hidden && "hidden"} :focus {
+    border: none;
+    outline: none;
+  }
 `;
 
-export const Link = styled.a.attrs({
-  target: "_blank",
-  rel: "noopener noreferrer",
-})`
-  color: #61dafb;
-  margin-top: 10px;
-`;
-
-export const Button = styled.button`
-  background-color: white;
-  border: none;
+export const RequestButton = styled.button`
+  background-color: #52be80;
+  border: 2px;
   border-radius: 8px;
   color: #282c34;
   cursor: pointer;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
-  margin: 0px 20px;
-  padding: 12px 24px;
+  margin: 0px 6px;
+  padding: 10px 10px;
+
+  ${props => props.hidden && "hidden"} :focus {
+    border: none;
+    outline: none;
+  }
+`;
+
+export const WalletButton = styled.button`
+  background-color: white;
+  border: 2px;
+  border-radius: 8px;
+  color: #282c34;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0px 6px;
+  padding: 10px 10px;
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;
