@@ -173,9 +173,11 @@ function App() {
     await getWalletPtyBalance()
   }, 5000);
 
-  window.ethereum.on('networkChanged', function(networkId){
-   window.location.reload()
-  });
+  if (window.ethereum) {
+    window.ethereum.on('networkChanged', function(networkId){
+      window.location.reload()
+     });
+  }
 
   return (
     <div>
