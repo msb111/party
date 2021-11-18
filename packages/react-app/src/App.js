@@ -7,6 +7,9 @@ import useWeb3Modal from "./hooks/useWeb3Modal";
 
 import { addresses, abis } from "@project/contracts";
 
+
+var overrideRequestButtonDisable = false
+
 function SetWalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
   const [account, setAccount] = useState("");
   const [rendered, setRendered] = useState("");
@@ -31,12 +34,12 @@ function SetWalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
     }
     fetchAccount();
   }, [account, provider, setAccount, setRendered]);
-  let btnClass = ""
+  let btnClass = "outline-primary"
   if (provider) {
-    btnClass = "btn-warning"
+    btnClass = "outline-warning"
   }
   return (
-    <Button id="wallet_button" className={btnClass}
+    <Button id="wallet_button" variant={btnClass}
       onClick={() => {
         if (!provider) {
           loadWeb3Modal();
@@ -90,7 +93,7 @@ function App() {
         const userBalance = await ptyContract.balanceOf(userAddress)
         const balance = userBalance.toString()
         let readableBalance = "0.000"
-        if (balance != 0) {
+        if (balance != 0) { // not strict comparison here
           readableBalance = balance.substring(0, balance.length - 18) + "." + balance.substring(balance.length - 18, balance.length -15);
         }
         var walletInfoElement = document.getElementById("wallet_info")
@@ -107,7 +110,7 @@ function App() {
     }
   }
   
-  async function checkFaucet() {
+  async function checkAllowedToWithdraw() {
     if (provider) {
       const networkInfo = await provider.getNetwork()
       const chainId = networkInfo["chainId"]
@@ -116,6 +119,11 @@ function App() {
         const userAddress = accounts[0];
         const faucetContract = new Contract(addresses.faucet, abis.faucet, provider);
         const allowedToWithdraw = await faucetContract.allowedToWithdraw(userAddress);
+        if (!allowedToWithdraw) {
+          document.getElementById("request_button").disabled = true
+        } else {
+          document.getElementById("request_button").disabled = false || overrideRequestButtonDisable;
+        }
         return allowedToWithdraw;
       }
     }
@@ -128,14 +136,20 @@ function App() {
       const chainId = networkInfo["chainId"]
       if (chainId === 777) {
         try {
-          const allowedToWithdraw = await checkFaucet()
-          if (true == allowedToWithdraw) {
+          const allowedToWithdraw = await checkAllowedToWithdraw()
+          if (true === allowedToWithdraw) {
+            requestButtonElement.disabled = true
             const signer = provider.getSigner()
             const faucetContract = new Contract(addresses.faucet, abis.faucet, signer);
             const requestTokens = await faucetContract.requestTokens();
             console.log(requestTokens);
             alert("Success! You claimed 10,000PTY.")
             getWalletPtyBalance()
+
+            overrideRequestButtonDisable = true
+            setTimeout(function () {
+              overrideRequestButtonDisable = false
+            }, 15000)
             return requestTokens;
           } else {
             const accounts = await provider.listAccounts();
@@ -144,19 +158,18 @@ function App() {
             alert("Request failed! " + readableAddress + " can request PTY once every 45 minutes.")
           }
         } catch (error) {
-          console.log(error)
+          console.error(error)
           if (error.hasOwnProperty("message")) {
             alert("Error: " + error.message)
           } else {
             alert("Request failed with unknown error!")
-            console.log(error)
           }
         }
       }
     }
     return false;
   }
-
+  
   checkChain()
 
   getFaucetPtyBalance()
@@ -164,10 +177,29 @@ function App() {
     await getFaucetPtyBalance()
   }, 15000);
 
+  checkAllowedToWithdraw()
+  setInterval(async () => {
+    checkAllowedToWithdraw()
+  }, 15000);
+
   getWalletPtyBalance()
   setInterval(async () => {
     await getWalletPtyBalance()
   }, 5000);
+
+  setInterval(async () => {
+    if (provider) {
+      let accounts = await provider.listAccounts();
+      const userAddress = accounts[0];
+      const buttonName = "Logout " + userAddress.substring(0, 6) + "..." + userAddress.substring(36)
+      const walletButtonElement = document.getElementById("wallet_button");
+      if (walletButtonElement.innerHTML !== buttonName) {
+        walletButtonElement.innerText = buttonName;
+        getWalletPtyBalance()
+        checkAllowedToWithdraw()
+      }
+    }
+  }, 1500)
 
   if (window.ethereum) {
     window.ethereum.on('chainChanged', function(networkId){
@@ -200,7 +232,7 @@ function App() {
           <Container>
             <Row className="justify-content-md-right">
               <Col className="text-right">
-              <p>Get Free Party Tokens: <Button hidden id="request_button" onClick={requestPtyTokens}>Request free $PTY</Button> <SetWalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
+              <p className="h3">Claim free Party tokens every 45 minutes: <Button hidden id="request_button" variant="primary" onClick={requestPtyTokens}>Request $PTY</Button> <SetWalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
               </p>
               </Col>
             </Row>
