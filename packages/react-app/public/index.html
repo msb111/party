@@ -2,44 +2,110 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="PartyToken is an ERC20 token on the cheaptETH network."
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="description"content="PartyToken is an ERC20 token on the cheaptETH network."/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    
+    <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/favicon.ico">
+	  <link rel="icon" type="image/png" sizes="96x96" href="%PUBLIC_URL%/favicon.ico">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"> 
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>PartyToken</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div class="wrapper">
+      <div class="container">
+        <hr>
+          <div class="row" id="root"></div>
+          <hr>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>TF is Party Token (PTY)?</h3>
+                  <p>
+                      For me it was an awesome opportunity to learn to code my first ERC20 token 
+                      on the <a href="https://cheapeth.org" target="_blank">cheapETH</a> network (testing in prod FTW), 
+                      for anybody else it is a party token or yet another method to obtain some free cheapETH. 
+                      As the name says, it's a <b>party</b>, and <mark>NOT</mark> for speculating on. This token 
+                      is most likely NOT going to the moon and if it does it's the cheapETH moon 
+                      which is still down here on Earth.
+                  </p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Tokenomics?</h3>
+                  <p>
+                      <b>Contract address:</b> 
+                      <a href="https://explore.cheapswap.io/account/0x4ac1242106601f70bfdc4731d4eeaf7f7501b5cd" target="_blank">
+                          0x4AC1242106601F70BfDc4731D4EEAF7f7501B5Cd
+                      </a> </br>
+                      <b>Total supply:</b> 276,338,660,057 </br>
+                      <b>Cheapswap liquidity:</b> 1,500 CTH/100,000,000 PTY 
+                      (Initial $PTY price: 0.000015 CTH per PTY). 
+                      <a href="https://explore.cheapswap.io/tx/0x6421ba72fdcaf4fd74e72e95246a19c549cd4c8c8cb67a4cc6d789feae32f418" target="_blank">
+                          LP tokens Burned
+                      </a>.</br>
+                      <b>Faucet contract balance:</b> 260,000,000,000+. Faucet gives 10,000PTY/address/45min</br>
+                      <b>Other:</b> Kept around 15B for bragging rights, faucet replenish, drops, and potential future party projects.
+                  </p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Who this for?</h3>
+                  <p>
+                      <b>Everybody!</b> </br>
+                      <b>You broke af?</b> I got you! 
+                      Grab your free PTY by connecting your metamask wallet at the top of the page. </br>
+                      <b>You da whale?</b> Please consider buying 1,2,5,10,100 CTH worth of PTY over
+                      on <a href="https://cheapswap.io/#/swap?outputCurrency=0x4AC1242106601F70BfDc4731D4EEAF7f7501B5Cd" target="_blank">
+                          cheapswap.io
+                      </a>. You get some awesome Party tokens and it raises the price so that faucet 
+                      users can get more cheapETH for their $PTY. It's like airdropping cheapETH through the Party. </br>
+                      Don't know what to do with the Party tokens your whale a** just bought? You can keep some for
+                      party bragging rights, send some to your blockchain friends, provide liquidity on cheapswap and, 
+                      for lolz, you can send some to the PartyFaucet contract address (0xfd1D23F823dA379a8AA7ADFAf02ed0ce624E1642), 
+                      then faucet users can continue to collect 10,000 PTY/address/45min after my 260B dries up. </br>
+                      Be a nice whale and pump the Party. Us paperhands love it when we see our cents double :).
+                  </p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <h3>Is there any good in this project?</h3>
+                  <p>
+                    Ofc it is, it's a party! </br>
+                    Faucet users use the cheapETH network to get their tokens. </br>
+                    Users learn/get to use decentralized swapping services like 
+                      <a href="https://cheapswap.io/#/swap?outputCurrency=0x4AC1242106601F70BfDc4731D4EEAF7f7501B5Cd" target="_blank">
+                          cheapswap.io</a>. </br>
+                    New crypto users learn the risks of holding for potential greater gains but on the cheap.  </br>
+                    Whales of all sizes can pump the party just for the lolz.  </br>
+                  </p>
+              </div>
+          </div>
+          <div class="row">
+              <hr>
+              <div class="col-md-12">
+                  <p>
+                      let's party!
+                      | 
+                      built on <a href="https://cheapeth.org" target="_blank">cheapETH</a> 
+                      | 
+                      donate to this project: 0xf4fF887c1C1fca7E9D6cd1eAe967fB2534f35620
+                  </p>
+              </div>
+          </div>
+        </div>   
+  </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script data-goatcounter="https://party.goatcounter.com/count"
-        async src="/count.js"></script>
+        async src="//gc.zgo.at/count.js"></script>
 </html>
