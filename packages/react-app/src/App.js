@@ -191,8 +191,8 @@ function App() {
             <Figure.Image
               width={150}
               height={150}
-              alt="171x180"
-              src="party/party.png"
+              alt="Party Token"
+              src="https://msb111.github.io/party/party.png"
             />
           </Figure>
         </Col>
