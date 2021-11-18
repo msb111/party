@@ -232,8 +232,9 @@ function App() {
           <Container>
             <Row className="justify-content-md-right">
               <Col className="text-right">
-              <p className="h3">Claim free Party tokens every 45 minutes: <Button hidden id="request_button" variant="primary" onClick={requestPtyTokens}>Request $PTY</Button> <SetWalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
+              <p className="h4">Claim free Party tokens every 45 minutes:
               </p>
+              <Button hidden id="request_button" variant="primary" onClick={requestPtyTokens}>Request $PTY</Button> <SetWalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
               </Col>
             </Row>
           </Container>
